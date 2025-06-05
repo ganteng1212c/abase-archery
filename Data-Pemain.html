@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABase - Data Pemain</title>
+    <link rel="icon" type="image/png" href="aset/Icon.svg">
+    <link rel="stylesheet" href="styles/base.css">
+    <style>
+        .data-container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .player-data {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .player-name {
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            color: #4a9eff;
+        }
+
+        .score-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .score-table th,
+        .score-table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .score-table th {
+            background: rgba(74, 158, 255, 0.1);
+            color: #4a9eff;
+        }
+
+        .action-button {
+            background: linear-gradient(135deg, #4a9eff, #3178e6);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74, 158, 255, 0.3);
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .data-container {
+                padding: 15px;
+            }
+
+            .player-data {
+                padding: 15px;
+            }
+
+            .player-name {
+                font-size: 1rem;
+            }
+
+            .score-table th,
+            .score-table td {
+                padding: 8px;
+                font-size: 0.9rem;
+            }
+
+            .action-button {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="data-container">
+        <button class="action-button back-button" onclick="goBack()">⬅️ Kembali</button>
+        <div class="player-data">
+            <h2 class="player-name">Nama Pemain</h2>
+            <table class="score-table">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Skor</th>
+                    </tr>
+                </thead>
+                <tbody id="scoreTableBody">
+                    <!-- Score rows will be generated here -->
+                </tbody>
+            </table>
+            <button class="action-button" onclick="saveScores()">Selesai</button>
+        </div>
+    </div>
+
+    <audio id="buttonSound" src="aset/Button effect.mp3"></audio>
+    <script src="score-sheet.js"></script>
+</body>
+</html>

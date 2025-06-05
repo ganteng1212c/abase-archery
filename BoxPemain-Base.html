@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABase - Box Pemain</title>
+    <link rel="icon" type="image/png" href="aset/Icon.svg">
+    <link rel="stylesheet" href="styles/base.css">
+    <style>
+        .box-container {
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .player-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .player-name {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: #4a9eff;
+        }
+
+        .score-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        .score-input {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 8px;
+            border-radius: 8px;
+            color: white;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        .action-button {
+            background: linear-gradient(135deg, #4a9eff, #3178e6);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74, 158, 255, 0.3);
+        }
+
+        @media (max-width: 480px) {
+            .box-container {
+                padding: 15px;
+            }
+
+            .player-box {
+                padding: 15px;
+            }
+
+            .player-name {
+                font-size: 1rem;
+            }
+
+            .score-input {
+                padding: 6px;
+                font-size: 0.9rem;
+            }
+
+            .action-button {
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box-container">
+        <div class="player-box">
+            <h2 class="player-name">Nama Pemain</h2>
+            <div class="score-grid">
+                <!-- Score inputs will be generated here -->
+            </div>
+            <button class="action-button" onclick="saveScores()">Selesai</button>
+        </div>
+    </div>
+
+    <audio id="buttonSound" src="aset/Button effect.mp3"></audio>
+    <script src="player-setup.js"></script>
+</body>
+</html>
