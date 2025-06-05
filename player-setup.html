@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABase - Setup Pemain</title>
+    <link rel="icon" type="image/png" href="aset/Icon.svg">
+    <link rel="stylesheet" href="styles/base.css">
+    <style>
+        .setup-container {
+            padding: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .setup-form {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a9eff;
+            font-size: 1rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: #4a9eff;
+            box-shadow: 0 0 0 2px rgba(74, 158, 255, 0.2);
+        }
+
+        .action-button {
+            background: linear-gradient(135deg, #4a9eff, #3178e6);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            font-size: 1rem;
+        }
+
+        .action-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(74, 158, 255, 0.3);
+        }
+
+        .back-button {
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 480px) {
+            .setup-container {
+                padding: 15px;
+            }
+
+            .setup-form {
+                padding: 15px;
+            }
+
+            .form-label {
+                font-size: 0.9rem;
+            }
+
+            .form-input {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            .action-button {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="setup-container">
+        <button class="action-button back-button" onclick="goBack()">⬅️ Kembali</button>
+        <div class="setup-form">
+            <div class="form-group">
+                <label class="form-label" for="playerName">Nama Pemain</label>
+                <input type="text" id="playerName" class="form-input" placeholder="Masukkan nama pemain" required>
+            </div>
+            <div class="form-group">
+                <label class="form-label" for="playerSchool">Sekolah (Opsional)</label>
+                <input type="text" id="playerSchool" class="form-input" placeholder="Masukkan nama sekolah">
+            </div>
+            <button class="action-button" onclick="startSession()">Mulai Sesi</button>
+        </div>
+    </div>
+
+    <audio id="buttonSound" src="aset/Button effect.mp3"></audio>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const buttonSound = document.getElementById('buttonSound');
+
+            // Play sound on button click
+            document.querySelectorAll('.action-button').forEach(button => {
+                button.addEventListener('click', () => {
+                    buttonSound.currentTime = 0;
+                    buttonSound.play();
+                });
+            });
+        });
+
+        function startSession() {
+            const playerName = document.getElementById('playerName').value.trim();
+            const playerSchool = document.getElementById('playerSchool').value.trim();
+
+            if (!playerName) {
+                alert('Mohon masukkan nama pemain!');
+                return;
+            }
+
+            // Redirect to box pemain with player info
+            const params = new URLSearchParams();
+            params.append('name', playerName);
+            if (playerSchool) {
+                params.append('school', playerSchool);
+            }
+            window.location.href = `BoxPemain-Base.html?${params.toString()}`;
+        }
+
+        function goBack() {
+            window.location.href = 'home.html';
+        }
+    </script>
+</body>
+</html>
